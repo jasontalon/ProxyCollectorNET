@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.ValueGeneration;
 
 namespace ProxyCollectorNET.Infrastructure.Database;
 
-public abstract class DateTimeOffsetValueGenerator : ValueGenerator<DateTimeOffset>
+public class DateTimeOffsetValueGenerator : ValueGenerator<DateTimeOffset>
 {
     public override DateTimeOffset Next(EntityEntry entry)
     {

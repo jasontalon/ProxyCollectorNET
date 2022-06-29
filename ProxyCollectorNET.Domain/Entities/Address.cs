@@ -1,4 +1,4 @@
-namespace ProxyCollectorNET.Domain.Domain;
+namespace ProxyCollectorNET.Domain.Entities;
 
 public class Address
 {
@@ -8,4 +8,5 @@ public class Address
     public string? CountryOfOrigin { get; set; }
     public string? Organisation { get; set; }
     public string? Source { get; set; }
+    public DateTimeOffset? CreatedAtUtc { get; set; }
 }

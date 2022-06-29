@@ -14,25 +14,35 @@ public abstract class ProxyCollectorStrategyBase : IProxyCollectorStrategy
 {
     protected readonly HttpClient _httpClient;
     private readonly AppDbContext _dbContext;
-    protected readonly ILogger _logger;
 
-    public ProxyCollectorStrategyBase(AppDbContext dbContext, IHttpClientFactory httpClientFactory, ILogger logger)
+    protected readonly ILogger _logger;
+    protected readonly ProxyCollectorOptions _options;
+
+    public ProxyCollectorStrategyBase(AppDbContext dbContext, IHttpClientFactory httpClientFactory,
+        ILogger<IProxyCollectorStrategy> logger)
     {
         _dbContext = dbContext;
         _logger = logger;
         _httpClient = httpClientFactory.CreateClient();
+        _options = new ProxyCollectorOptions();
     }
 
-    public abstract void Configure(Action<ProxyCollectorOptions> options);
+    public abstract void Configure(ProxyCollectorOptions options);
 
-    public async Task Work(CancellationToken cancellationToken)
+    public async Task WorkAsync(CancellationToken cancellationToken)
     {
-        var proxyAddresses = await Fetch(cancellationToken);
+        Configure(_options);
 
-        foreach (var proxyAddress in proxyAddresses)
-        {
-        }
+        if (string.IsNullOrEmpty(_options.BaseUrl))
+            throw new ArgumentNullException(nameof(_options.BaseUrl));
+
+        if (string.IsNullOrEmpty(_options.ServiceName))
+            throw new ArgumentNullException(nameof(_options.ServiceName));
+        
+        _httpClient.BaseAddress = new Uri(_options.BaseUrl);
+        
+        await FetchAsync(cancellationToken);
     }
 
-    public abstract Task<List<ProxyAddress>> Fetch(CancellationToken cancellationToken = default);
+    public abstract Task<List<ProxyAddress>> FetchAsync(CancellationToken cancellationToken = default);
 }

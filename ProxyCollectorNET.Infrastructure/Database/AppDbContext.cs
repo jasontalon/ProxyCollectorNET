@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ValueGeneration;
 using ProxyCollectorNET.Domain.Entities;
 
 namespace ProxyCollectorNET.Infrastructure.Database;
@@ -22,8 +21,7 @@ public class AppDbContext : DbContext
                     k.IPAddress, k.Port
                 });
 
-            builder.Property(p => p.CreatedAtUtc).HasValueGenerator<GuidValueGenerator>();
-
+            builder.Property(p => p.CreatedAtUtc).HasValueGenerator<DateTimeOffsetValueGenerator>();
         });
     }
 }
