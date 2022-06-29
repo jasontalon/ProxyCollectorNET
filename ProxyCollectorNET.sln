@@ -1,16 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollectorNET", "ProxyCollectorNET\ProxyCollectorNET.csproj", "{F1CFFA23-92EC-47EE-8985-CD498DBC462C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollectorNET", "src\ProxyCollectorNET\ProxyCollectorNET.csproj", "{F1CFFA23-92EC-47EE-8985-CD498DBC462C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{43A94E96-0B61-4265-B1FD-6F804D2BCA13}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "src\Tests", "{43A94E96-0B61-4265-B1FD-6F804D2BCA13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollectorNET.Tests", "Tests\ProxyCollectorNET.Tests\ProxyCollectorNET.Tests.csproj", "{8C5B8E2F-1F66-486F-9F93-D2A37A56AD98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollectorNET.Tests", "src\Tests\ProxyCollectorNET.Tests\ProxyCollectorNET.Tests.csproj", "{8C5B8E2F-1F66-486F-9F93-D2A37A56AD98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollectorNET.Infrastructure", "ProxyCollectorNET.Infrastructure\ProxyCollectorNET.Infrastructure.csproj", "{485B14CE-8E06-4888-BFEB-4D5A2F1AFF0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollectorNET.Infrastructure", "src\ProxyCollectorNET.Infrastructure\ProxyCollectorNET.Infrastructure.csproj", "{485B14CE-8E06-4888-BFEB-4D5A2F1AFF0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollectorNET.Strategies", "ProxyCollectorNET.Strategies\ProxyCollectorNET.Strategies.csproj", "{1FE44573-29BB-4754-B8BC-BE00E62510C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollectorNET.Strategies", "src\ProxyCollectorNET.Strategies\ProxyCollectorNET.Strategies.csproj", "{1FE44573-29BB-4754-B8BC-BE00E62510C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollectorNET.Domain", "ProxyCollectorNET.Domain\ProxyCollectorNET.Domain.csproj", "{227A7E07-5022-465E-8744-19F666BE3808}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollectorNET.Domain", "src\ProxyCollectorNET.Domain\ProxyCollectorNET.Domain.csproj", "{227A7E07-5022-465E-8744-19F666BE3808}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
