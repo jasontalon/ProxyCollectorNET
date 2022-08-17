@@ -16,5 +16,5 @@ public abstract class BaseSetup
     [SetUp]
     protected void Setup() => serviceProvider = host.Services;
 
-    protected T GetService<T>() => serviceProvider.GetRequiredService<T>();
+    protected T? GetService<T>() => serviceProvider.GetRequiredService<T>() ?? default;
 }

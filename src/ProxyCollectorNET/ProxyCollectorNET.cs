@@ -1,20 +1,27 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProxyCollectorNET.Infrastructure.Database;
-using ProxyCollectorNET.Strategies;
+using ProxyCollectorNET.Collectors;
+using HttpMessageHandler = ProxyCollectorNET.Infrastructure.HttpMessageHandler;
 
 namespace ProxyCollectorNET;
 
 public static class ProxyCollectorNET
 {
-    public static IServiceCollection AddProxyCollector(this IServiceCollection serviceCollection,
+    private static IServiceCollection AddProxyCollector(this IServiceCollection serviceCollection,
         IConfiguration configuration)
     {
         serviceCollection
-            .AddInfrastructure(configuration)
-            .AddProxyCollectionStrategies();
+            .AddAutoMapper(typeof(ProxyCollectorNET))
+            .AddScoped<HttpMessageHandler>()
+            .AddCollectors();
+
         return serviceCollection;
+    }
+
+    private static void AddProxyCollector(HostBuilderContext hostBuilderContext, IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddProxyCollector(hostBuilderContext.Configuration);
     }
 
     public static IHost BuildHost()
@@ -25,7 +32,7 @@ public static class ProxyCollectorNET
 
         var host = Host.CreateDefaultBuilder()
             .ConfigureAppConfiguration(builder => builder.AddConfiguration(Configuration))
-            .ConfigureServices((_, services) => services.AddProxyCollector(Configuration));
+            .ConfigureServices(AddProxyCollector);
 
         return host.Build();
     }
