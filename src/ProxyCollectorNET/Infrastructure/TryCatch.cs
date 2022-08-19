@@ -8,7 +8,7 @@ public static class TryCatch
         {
             var response = await method();
 
-            return (response, null);
+            return (response, default);
         }
         catch (Exception ex)
         {
@@ -27,6 +27,34 @@ public static class TryCatch
         catch (Exception ex)
         {
             return (default, ex);
+        }
+    }
+
+    public static Exception? Handle(Action method)
+    {
+        try
+        {
+            method();
+
+            return null;
+        }
+        catch (Exception ex)
+        {
+            return ex;
+        }
+    }
+
+    public static async Task<Exception?> HandleAsync(Action method)
+    {
+        try
+        {
+            await Task.Run(method);
+
+            return null;
+        }
+        catch (Exception ex)
+        {
+            return ex;
         }
     }
 }

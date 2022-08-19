@@ -4,14 +4,17 @@ using ProxyCollectorNET.Domain;
 
 namespace ProxyCollectorNET.Dto;
 
-public class GeonodeResponse : Profile
+public class GeonodeMapperProfile : Profile
 {
-    public GeonodeResponse()
+    public GeonodeMapperProfile()
     {
         CreateMap<GeonodeResponse, List<Address>>()
             .ConvertUsing<GeonodeResponseToAddressConverter>();
     }
+}
 
+public class GeonodeResponse
+{
     [JsonProperty("summary", NullValueHandling = NullValueHandling.Ignore)]
     public GeoNodeResponseSummary? Summary { get; set; }
 
@@ -75,7 +78,7 @@ public class GeonodeResponseDatum
     public long? Speed { get; set; }
 
     [JsonProperty("updated_at", NullValueHandling = NullValueHandling.Ignore)]
-    public DateTimeOffset? UpdatedAt { get; set; }    
+    public DateTimeOffset? UpdatedAt { get; set; }
 
     [JsonProperty("upTime", NullValueHandling = NullValueHandling.Ignore)]
     public long? UpTime { get; set; }

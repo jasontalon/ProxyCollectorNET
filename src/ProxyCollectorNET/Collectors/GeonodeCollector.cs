@@ -22,7 +22,7 @@ public class GeonodeCollector : IGeonodeCollector
         _mapper = mapper;
     }
 
-    public async Task<(List<Address>? Addresses, Exception? Exception)> Fetch(CancellationToken cancellationToken)
+    public async Task<(List<Address>? Addresses, Exception? Exception)> FetchAsync(CancellationToken cancellationToken)
     {
         var path = "api/proxy-list?limit=100&page=1";
 
@@ -40,7 +40,7 @@ public class GeonodeCollector : IGeonodeCollector
         return (addresses, null);
     }
 
-    public static void ConfigureClient(HttpClient client)
+    public static void ConfigureHttpClient(HttpClient client)
     {
         client.BaseAddress = new Uri("https://proxylist.geonode.com");
         client.Timeout = TimeSpan.FromSeconds(10);

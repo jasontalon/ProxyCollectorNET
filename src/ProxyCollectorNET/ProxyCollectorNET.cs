@@ -20,9 +20,7 @@ public static class ProxyCollectorNET
     }
 
     private static void AddProxyCollector(HostBuilderContext hostBuilderContext, IServiceCollection serviceCollection)
-    {
-        serviceCollection.AddProxyCollector(hostBuilderContext.Configuration);
-    }
+        => serviceCollection.AddProxyCollector(hostBuilderContext.Configuration);
 
     public static IHost BuildHost()
     {

@@ -12,7 +12,7 @@ public class Geonode_Should_Fetch : BaseSetup
     {
         var service = GetService<IGeonodeCollector>();
 
-        var (results, error) = await service.Fetch();
+        var (results, error) = await service.FetchAsync();
 
         results.ShouldNotBeNull(error?.ToString());
     }
